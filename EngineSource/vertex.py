@@ -2,8 +2,8 @@ from Engine.vector import Vector
 import math
 
 class Vertex:
-    def __init__(self, Position):
-        self.Position = Position
+    def __init__(self, position):
+        self.Position = position
         self.projection = None
 
     def update(self, camera):
@@ -19,7 +19,7 @@ class Vertex:
         G = self.findG(camera)
 
         g = G.newVector(camera.S)
-        if (g.length() != 0):
+        if (g.selfLength() != 0):
             #uhel mezi g a u (u S)
             alpha = g.angle(camera.u)
 
@@ -97,8 +97,8 @@ class Vertex:
                       c3 + t*g3)
 
     def isInFrontOfCamera(self, camera):
-        a = self.Position.pointLen(camera.S)
-        ac = self.Position.pointLen(camera.Position)
+        a = self.Position.distance(camera.S)
+        ac = self.Position.distance(camera.Position)
         if (a <= ac): return True
 
         return False

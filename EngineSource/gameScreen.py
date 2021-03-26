@@ -22,7 +22,7 @@ class GameScreen:
         self.screen.fill((self.color))
 
         self.Objects = []
-        self.camera = Camera(Vector(0,0,0),0,0)
+        self.camera = Camera(Vector(0,0,0), width/2, height/2)
 
     def update(self):
         self.camera.update()

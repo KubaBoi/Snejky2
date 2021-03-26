@@ -12,11 +12,28 @@ class Mesh:
         self.triangles = None
         self.colors = None
 
+        self.defaultColor = (255,0,255)
+
     def drawMesh(self, screen, camera):
         for v in self.vertices:
-            
+            v.update(camera)
 
-        pygame.draw.polygon(screen, (0,255,0), [(152, 190), (152, 230), (1056, 230),(1056, 190)],True)
+        for t in range(len(self.triangles)):
+            v1 = self.triangles[t]
+            v2 = self.triangles[t + 1]
+            v3 = self.triangles[t + 2]
+
+            if (len(self.colors) > int(t/3)):
+                color = self.colors[int(t/3)]
+            else:
+                color = self.defaultColor
+
+            pygame.draw.polygon(screen, color,
+                        [self.vertices[v1].projection,
+                        self.vertices[v2].projection,
+                        self.vertices[v3].projection])
+
+            t += 2
 
     def setVertices(self, vertices):
         self.vertices = vertices

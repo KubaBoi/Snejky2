@@ -13,7 +13,9 @@ class Vector:
         return math.sqrt(self.x*self.x + self.y*self.y + self.z*self.z)
 
     def distance(self, vector):
-        return math.sqrt(pow(self.x - vector.x, 2) + pow(self.y - vector.y, 2) + pow(self.z - vector.z, 2))
+        return math.sqrt(pow(self.x - vector.x, 2) + 
+                        pow(self.y - vector.y, 2) + 
+                        pow(self.z - vector.z, 2))
 
     #bod - pricte k bodu vektor 
     def addVector(self, vector):
