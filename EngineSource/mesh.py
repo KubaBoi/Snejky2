@@ -34,6 +34,8 @@ class Mesh:
                         self.vertices[v3].projection])
 
             t += 2
+            if (t >= len(self.triangles) - 1):
+                break
 
     def setVertices(self, vertices):
         self.vertices = vertices

@@ -10,9 +10,9 @@ class Cube(Object):
         self.mesh = Mesh()
 
         vertices = []
-        vertices.append(Vertex(Vector(1,10,10)))
-        vertices.append(Vertex(Vector(1,0,10)))
-        vertices.append(Vertex(Vector(10,10,10)))
+        vertices.append(Vertex(Vector(1,10,-10)))
+        vertices.append(Vertex(Vector(1,0,-10)))
+        vertices.append(Vertex(Vector(10,10,-10)))
 
         triangles = []
         triangles.append(0)

@@ -5,7 +5,7 @@ from Engine.objects.cube import Cube
 
 engine = Engine()
 
-engine.addObject(Cube(Vector(0, 0, 0)))
+engine.addObject(Cube(Vector(0, 0, -10)))
 
 run = True
 while run:
