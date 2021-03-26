@@ -1,14 +1,44 @@
+"""
+uchovává, vykresluje a spravuje objekty
+obsuhuje i pygame scene
+"""
 
-"""
-uchovává a spravuje objekty
-"""
+import pygame
+from Engine.camera import Camera
+from Engine.vector import Vector
 
 class GameScreen:
-    def __init__(self):
-        pass
+    def __init__(self, width=1280, height=720, color=(255, 255, 255), fullScreen=False):
+        self.width = width
+        self.height = height
+
+        #full screen
+        if (fullScreen):
+            self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+        else:
+            self.screen = pygame.display.set_mode((width, height))
+
+        self.color = color
+        self.screen.fill((self.color))
+
+        self.Objects = []
+        self.camera = Camera(Vector(0,0,0),0,0)
 
     def update(self):
-        pass
+        self.camera.update()
+        for o in self.Objects:
+            o.update()
 
     def draw(self):
-        pass
+        self.screen.fill((self.color))
+
+        for o in self.Objects:
+            o.draw(self.screen, self.camera)
+
+        pygame.display.flip()
+
+    def addObject(self, obj):
+        self.Objects.append(obj)
+
+    def removeObject(self, obj):
+        self.Objects.remove(obj)
