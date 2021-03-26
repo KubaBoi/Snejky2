@@ -5,7 +5,7 @@ class Object:
 
     def update(self):
         if (self.mesh != None):
-            self.mesh.update()
+            self.mesh.updateMesh()
 
     def draw(self, screen, camera):
         if (self.mesh != None):

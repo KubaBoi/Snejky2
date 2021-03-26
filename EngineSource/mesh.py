@@ -14,6 +14,9 @@ class Mesh:
 
         self.defaultColor = (255,0,255)
 
+    def updateMesh(self):
+        pass
+
     def drawMesh(self, screen, camera):
         for v in self.vertices:
             v.update(camera)
@@ -31,7 +34,7 @@ class Mesh:
             pygame.draw.polygon(screen, color,
                         [self.vertices[v1].projection,
                         self.vertices[v2].projection,
-                        self.vertices[v3].projection])
+                        self.vertices[v3].projection], width=0)
 
             t += 2
             if (t >= len(self.triangles) - 1):

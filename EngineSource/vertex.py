@@ -26,8 +26,8 @@ class Vertex:
             #uhel mezi g a kolmici na u
             beta = math.pi - (math.pi/2 + alpha)
 
-            x = abs(g.length() * math.sin(alpha))*1000
-            y = abs(g.length() * math.sin(beta))*1000
+            x = abs(g.selfLength() * math.sin(alpha))*1000
+            y = abs(g.selfLength() * math.sin(beta))*1000
 
             angle1 = g.angle(camera.u)
             angle2 = g.angle(camera.r)
@@ -47,8 +47,8 @@ class Vertex:
                 y = camera.y + y
                 
         else:
-            x = 0
-            y = 0
+            x = camera.x #tady byla zmena... byly tu 0
+            y = camera.y
             
         x = int(x)
         y = int(y)

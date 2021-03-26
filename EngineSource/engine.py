@@ -7,7 +7,7 @@ class Engine:
         self.gameScreen = GameScreen(color=(255,0,0))
 
     def update(self):
-
+        self.gameScreen.update()
         self.draw()
 
     def draw(self):

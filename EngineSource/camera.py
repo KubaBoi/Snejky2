@@ -27,7 +27,7 @@ class Camera:
         self.input()
         self.S = self.Position.addVector(self.f)
         self.B = self.Position.addVector(self.f.reverseVector())
-        self.Position.speak("kamera: ")
+        #self.Position.speak("kamera: ")
 
     def input(self):
         self.rotate(pygame.mouse.get_pressed())

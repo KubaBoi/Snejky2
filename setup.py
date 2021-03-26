@@ -10,6 +10,9 @@ path = "EngineSource"
 distPath = "EnginePyx"
 cPath = "Engine"
 
+if (os.path.exists(cPath) and not os.path.exists(path)):
+    os.rename(cPath, path)
+
 #odstrani predchozi build
 if (os.path.exists(distPath)):
     print(f"Removing {distPath}")

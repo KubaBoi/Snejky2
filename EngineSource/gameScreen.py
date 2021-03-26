@@ -22,7 +22,7 @@ class GameScreen:
         self.screen.fill((self.color))
 
         self.Objects = []
-        self.camera = Camera(Vector(0,0,0), width/2, height/2)
+        self.camera = Camera(Vector(0,0,-20), width/2, height/2)
 
     def update(self):
         self.camera.update()
@@ -31,6 +31,12 @@ class GameScreen:
 
     def draw(self):
         self.screen.fill((self.color))
+        pygame.draw.line(self.screen, (0,0,0),
+                         (self.width/2-5, self.height/2),
+                         (self.width/2+5, self.height/2))
+        pygame.draw.line(self.screen, (0,0,0),
+                         (self.width/2, self.height/2-5),
+                         (self.width/2, self.height/2+5))
 
         for o in self.Objects:
             o.draw(self.screen, self.camera)
