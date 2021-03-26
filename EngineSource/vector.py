@@ -43,10 +43,10 @@ class Vector:
 
     #vector - vrati normalizovany vektor
     def norm(self):
-        if (self.selfLength != 0):
-            return Vector(self.x / self.selfLength,
-                          self.y / self.selfLength,
-                          self.z / self.selfLength)
+        if (self.selfLength() != 0):
+            return Vector(self.x / self.selfLength(),
+                          self.y / self.selfLength(),
+                          self.z / self.selfLength())
         else: return Vector(0, 0, 0)
 
     #bod - vytvori novy vektor k bodu

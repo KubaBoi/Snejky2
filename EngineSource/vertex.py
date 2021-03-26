@@ -32,19 +32,19 @@ class Vertex:
             angle1 = g.angle(camera.u)
             angle2 = g.angle(camera.r)
             
-            #self.isInFront = True
+            #zmena plusy a minusy u y
             if (0 <= angle1 <= math.pi/2 and 0 <= angle2 <= math.pi/2): #I. kvadrant
                 x = camera.x + x
-                y = camera.y - y
+                y = camera.y + y
             elif (0 <= angle1 <= math.pi/2 and angle2 >= math.pi/2): #II. kvadrant
                 x = camera.x - x
-                y = camera.y - y      
+                y = camera.y + y      
             elif (angle1 >= math.pi/2 and angle2 >= math.pi/2): #III. kvadrant
                 x = camera.x - x
-                y = camera.y + y
+                y = camera.y - y
             elif (angle1 >= math.pi/2 and 0 <= angle2 <= math.pi/2): #IV. kvadran               
                 x = camera.x + x
-                y = camera.y + y
+                y = camera.y - y
                 
         else:
             x = camera.x #tady byla zmena... byly tu 0

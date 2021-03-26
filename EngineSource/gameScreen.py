@@ -6,6 +6,7 @@ obsuhuje i pygame scene
 import pygame
 from Engine.camera import Camera
 from Engine.vector import Vector
+from Engine.light import Light
 
 class GameScreen:
     def __init__(self, width=1280, height=720, color=(255, 255, 255), fullScreen=False):
@@ -22,7 +23,9 @@ class GameScreen:
         self.screen.fill((self.color))
 
         self.Objects = []
+        self.Lights = []
         self.camera = Camera(Vector(0,0,-20), width/2, height/2)
+        self.Lights.append(Light(Vector(0,0,-20)))
 
     def update(self):
         self.camera.update()
@@ -39,7 +42,7 @@ class GameScreen:
                          (self.width/2, self.height/2+5))
 
         for o in self.Objects:
-            o.draw(self.screen, self.camera)
+            o.draw(self)
 
         pygame.display.flip()
 

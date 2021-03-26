@@ -4,7 +4,7 @@ from Engine.gameScreen import GameScreen
 
 class Engine:
     def __init__(self):
-        self.gameScreen = GameScreen(color=(255,0,0))
+        self.gameScreen = GameScreen()
 
     def update(self):
         self.gameScreen.update()

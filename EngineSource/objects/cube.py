@@ -4,24 +4,7 @@ from Engine.vertex import Vertex
 from Engine.vector import Vector
 
 class Cube(Object):
-    def __init__(self, position):
+    def __init__(self, position, scale, color=(255,0,255)):
         Object.__init__(self, position)
 
-        self.mesh = Mesh()
-
-        vertices = []
-        vertices.append(Vertex(Vector(0, 0, 0)))
-        vertices.append(Vertex(Vector(0, 1, 0)))
-        vertices.append(Vertex(Vector(1, 0, 0)))
-
-        triangles = []
-        triangles.append(0)
-        triangles.append(1)
-        triangles.append(2)
-
-        colors = []
-        colors.append((30, 20, 255))
-
-        self.mesh.setVertices(vertices)
-        self.mesh.setTriangles(triangles)
-        self.mesh.setColors(colors)
+        self.loadMesh("Engine/meshes/cube.json", scale, color)

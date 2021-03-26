@@ -10,6 +10,8 @@ path = "EngineSource"
 distPath = "EnginePyx"
 cPath = "Engine"
 
+#tohle je jenom pojistka, kdybych zapomnel... lepsi je prejmenovavat to rucne
+#vs code pak prestane cist otevreny soubory a vsechno se musi otevrit znovu
 if (os.path.exists(cPath) and not os.path.exists(path)):
     os.rename(cPath, path)
 
@@ -31,16 +33,21 @@ for (dirpath, dirnames, filenames) in walk(path):
         print(dirpath)
 
     for f in filenames:
-        copyfile(dirpath + "\\" + f, dirpath.replace(path, distPath) + "\\" + f + "x")
+        copyfile(dirpath + "\\" + f, dirpath.replace(path, distPath) + "\\"
+                     + f.replace(".py", ".pyx"))
 
 #vytvori .c soubory
 for (dirpath, dirnames, filenames) in walk(distPath):
     for f in filenames:
-        setup(ext_modules = cythonize(dirpath + "\\" + f))
+        if (f.split(".")[len(f.split(".")) - 1] == "pyx"):
+            setup(ext_modules = cythonize(dirpath + "\\" + f))
 
-        name = f.replace("pyx", "") + "cp39-win_amd64.pyd"
-        cName = f.replace("pyx", "c")
-        while (not os.path.exists(name)):
-            time.sleep(0.1)
-        move(name, dirpath.replace(distPath, cPath) + "\\" + name) #move .pyd soubory
-        move(dirpath + "\\" + cName, dirpath.replace(distPath, cPath) + "\\" + cName) #move .c soubory
+            name = f.replace("pyx", "") + "cp39-win_amd64.pyd"
+            cName = f.replace("pyx", "c")
+            while (not os.path.exists(name)):
+                time.sleep(0.1)
+            move(name, dirpath.replace(distPath, cPath) + "\\" + name) #move .pyd soubory
+            move(dirpath + "\\" + cName, dirpath.replace(distPath, cPath) + "\\" + cName) #move .c soubory
+
+        else:
+            move(dirpath + "\\" + f, dirpath.replace(distPath, cPath) + "\\" + f)
