@@ -25,7 +25,7 @@ penguin = Penguin(Vector(0,0,-10), 1, engine)
 #engine.addObject(penguin)
 
 
-terrain = Terrain(Vector(0,0,-10))
+terrain = Terrain(Vector(0,0,-10), scale=1, width=20, height=20)
 engine.addObject(terrain)
 
 heights = []
